@@ -53,6 +53,9 @@ counters = {}
 for line in fdesc:
   elements = line.split(" ");
 
+  if (len(elements) != 4):
+    break
+
   # trace structure
   interfaceNum = int(elements[0])
   currtime = float(elements[1])
@@ -79,7 +82,7 @@ for line in fdesc:
 counters[interface].output(starttime/timescale, interval)
 
 #now we need to generate the gnuplot files
-tput_plot = "u 1:(($7+$8+$2+$6)*8/1000000) with lines lw 3 t 'Throughput"
+tput_plot = ["u 1:(($7+$8+$2+$6)*8/1000000) with lines lt "," lw 3 t 'Throughput "]
 lecho_plot = "u 1:(($6)*8/1000000) with lines lw 3 t 'FNE"
 fne_plot = "u 1:(($8)*8/1000000) with lines lw 3 t 'Loss Echo"
 #
@@ -93,20 +96,20 @@ tputfile.write(labels)
 
 for interface in counters:
   #do per interface graph firts
-  interfacestr = str(interface)
-  interfacefile = open (".interface"+interfacestr+".gnu", 'w')
-  plotinterfacefile  = "gnuplot -persist .interface"+interfacestr+".gnu"
+  intstr = str(interface)
+  interfacefile = open (".interface"+intstr+".gnu", 'w')
+  plotinterfacefile  = "gnuplot -persist .interface"+intstr+".gnu"
   print plotinterfacefile
-  interfacefile.write("set title 'Interface "+interfacestr+" outbound\n")
+  interfacefile.write("set title 'Interface "+intstr+" outbound\n")
   interfacefile.write(labels)
-  interfacefile.write("plot '.interface"+interfacestr+".sampled' "+tput_plot+"'\n")
-  interfacefile.write("replot '.interface"+interfacestr+".sampled' "+lecho_plot+"'\n")
-  interfacefile.write("replot '.interface"+interfacestr+".sampled' "+fne_plot+"'\n")
+  interfacefile.write("plot '.interface"+intstr+".sampled' "+tput_plot[0]+"1"+tput_plot[1]+"'\n")
+  interfacefile.write("replot '.interface"+intstr+".sampled' "+lecho_plot+"'\n")
+  interfacefile.write("replot '.interface"+intstr+".sampled' "+fne_plot+"'\n")
 
   if replot:
-    tputfile.write("replot '.interface"+interfacestr+".sampled' "+tput_plot+" interface " + interfacestr+"\n")
+    tputfile.write("replot '.interface"+intstr+".sampled' "+tput_plot[0]+intstr+tput_plot[1]+ intstr+"\n")
   else:
-    tputfile.write("plot '.interface"+interfacestr+".sampled' "+tput_plot+" interface " + interfacestr+"\n")
+    tputfile.write("plot '.interface"+intstr+".sampled' "+tput_plot[0]+intstr+tput_plot[1]+intstr+"\n")
     replot = True
 
 plotinterfacestput  = "gnuplot -persist .interfacestput.gnu"

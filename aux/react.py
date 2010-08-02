@@ -45,8 +45,8 @@ for network, portlist in networks.iteritems():
     newfile.close()
 
 #now we need to generate the gnuplot files
-fwnd_plot = "u ($1/1000):2 with lines lw 3 t 'Fwnd int"
-loss_plot = "u ($1/1000):3 with lines lw 3 t 'Loss int"
+fwnd_plot = ["u ($1/1000):2 with lines lt "," lw 3 t 'Path "]
+loss_plot = ["u ($1/1000):3 with lines lt "," lw 3 t 'Path "]
 
 labels = "set ylabel 'Ratio'\nset xlabel 'Time(sec)'\n"
 
@@ -61,15 +61,15 @@ for network, portlist in networks.iteritems():
   print plotloss
   for port, list in portlist.iteritems():
     if(replot):
-      fwndfile.write("replot '."+network+"-"+port+".tr' "+fwnd_plot+port+"'\n")
-      lossfile.write("replot '."+network+"-"+port+".tr' "+loss_plot+port+"'\n")
+      fwndfile.write("replot '."+network+"-"+port+".tr' "+fwnd_plot[0]+port+fwnd_plot[1]+port+"'\n")
+      lossfile.write("replot '."+network+"-"+port+".tr' "+loss_plot[0]+port+fwnd_plot[1]+port+"'\n")
     else:
-      fwndfile.write("set title '"+network+" fwnd graph'\n")
+      fwndfile.write("set title '"+network+" Fwnd graph'\n")
       fwndfile.write(labels)
-      fwndfile.write("plot '."+network+"-"+port+".tr' "+fwnd_plot+port+"'\n")
+      fwndfile.write("plot '."+network+"-"+port+".tr' "+fwnd_plot[0]+port+fwnd_plot[1]+port+"'\n")
 
-      lossfile.write("set title '"+network+" loss graph'\n")
+      lossfile.write("set title '"+network+" Loss graph'\n")
       lossfile.write(labels)
-      lossfile.write("plot '."+network+"-"+port+".tr' "+loss_plot+port+"'\n")
+      lossfile.write("plot '."+network+"-"+port+".tr' "+loss_plot[0]+port+loss_plot[1]+port+"'\n")
       replot = True
 

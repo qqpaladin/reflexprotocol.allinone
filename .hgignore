@@ -6,3 +6,4 @@
 ~$
 ^ns-allinone
 ^\.config$
+^aux/*/

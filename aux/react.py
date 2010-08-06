@@ -72,4 +72,5 @@ for network, portlist in networks.iteritems():
       lossfile.write(labels)
       lossfile.write("plot '."+network+"-"+port+".tr' "+loss_plot[0]+port+loss_plot[1]+port+"'\n")
       replot = True
+  replot = False
 

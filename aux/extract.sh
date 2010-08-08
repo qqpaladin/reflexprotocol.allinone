@@ -19,9 +19,9 @@ then
   mkdir ".$2"
   python ../reflex.py reflex-out-$2.tr > .$2/plot 
   python ../react.py  reflex-stat-$2.tr >> .$2/plot
-  mv .*tr .$2
-  mv .*sampled .$2
-  mv .*gnu .$2
+  mv *tr .$2
+  mv *sampled .$2
+  mv *gnu .$2
   touch .$2/done
   cd .$2
   sh plot

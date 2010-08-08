@@ -15,7 +15,7 @@ class InterfaceTraffic:
 
   def __init__(self, interfaceNum):
     self.interfaceNum = int(interfaceNum)
-    self.filename = ".interface"+str(interfaceNum)+".sampled"
+    self.filename = "interface"+str(interfaceNum)+".sampled"
     self.out = open(self.filename,'w')
     self.counter = [0]*InterfaceTraffic.REFLEX_CODEPOINT_MAX
 
@@ -90,27 +90,27 @@ labels = "set ylabel 'Mbps'\nset xlabel 'Time(sec)'\n"
 
 replot = False
 
-tputfile = open (".interfacestput.gnu", 'w')
+tputfile = open ("interfacestput.gnu", 'w')
 tputfile.write("set title 'Throughput'\n")
 tputfile.write(labels)
 
 for interface in counters:
   #do per interface graph firts
   intstr = str(interface)
-  interfacefile = open (".interface"+intstr+".gnu", 'w')
-  plotinterfacefile  = "gnuplot -persist .interface"+intstr+".gnu"
+  interfacefile = open ("interface"+intstr+".gnu", 'w')
+  plotinterfacefile  = "gnuplot -persist interface"+intstr+".gnu"
   print plotinterfacefile
   interfacefile.write("set title 'Interface "+intstr+" outbound\n")
   interfacefile.write(labels)
-  interfacefile.write("plot '.interface"+intstr+".sampled' "+tput_plot[0]+"1"+tput_plot[1]+"'\n")
-  interfacefile.write("replot '.interface"+intstr+".sampled' "+lecho_plot+"'\n")
-  interfacefile.write("replot '.interface"+intstr+".sampled' "+fne_plot+"'\n")
+  interfacefile.write("plot 'interface"+intstr+".sampled' "+tput_plot[0]+"1"+tput_plot[1]+"'\n")
+  interfacefile.write("replot 'interface"+intstr+".sampled' "+lecho_plot+"'\n")
+  interfacefile.write("replot 'interface"+intstr+".sampled' "+fne_plot+"'\n")
 
   if replot:
-    tputfile.write("replot '.interface"+intstr+".sampled' "+tput_plot[0]+intstr+tput_plot[1]+ intstr+"\n")
+    tputfile.write("replot 'interface"+intstr+".sampled' "+tput_plot[0]+intstr+tput_plot[1]+ intstr+"\n")
   else:
-    tputfile.write("plot '.interface"+intstr+".sampled' "+tput_plot[0]+intstr+tput_plot[1]+intstr+"\n")
+    tputfile.write("plot 'interface"+intstr+".sampled' "+tput_plot[0]+intstr+tput_plot[1]+intstr+"\n")
     replot = True
 
-plotinterfacestput  = "gnuplot -persist .interfacestput.gnu"
+plotinterfacestput  = "gnuplot -persist interfacestput.gnu"
 print plotinterfacestput

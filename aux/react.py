@@ -39,7 +39,7 @@ for line in fdesc:
 #this creates list for each network/port pair
 for network, portlist in networks.iteritems():
   for port, list in portlist.iteritems():
-    newfile = open ("."+network+"-"+port+".tr", 'w')
+    newfile = open (network+"-"+port+".tr", 'w')
     for entry in list:
       newfile.write( str(entry[0])+" "+str(entry[1])+" "+str(entry[2])+"\n")
     newfile.close()
@@ -48,29 +48,30 @@ for network, portlist in networks.iteritems():
 fwnd_plot = ["u ($1/1000):2 with lines lt "," lw 3 t 'Path "]
 loss_plot = ["u ($1/1000):3 with lines lt "," lw 3 t 'Path "]
 
-labels = "set ylabel 'Ratio'\nset xlabel 'Time(sec)'\n"
+labels_fwnd = "set ylabel 'Ratio'\nset xlabel 'Time(sec)'\nset yrange [0:1]\n"
+labels_loss = "set ylabel 'Ratio'\nset xlabel 'Time(sec)'\n"
 
 replot = False
 
 for network, portlist in networks.iteritems():
-  fwndfile = open ("."+network+"-fwnd.gnu", 'w')
-  lossfile = open ("."+network+"-loss.gnu", 'w')
-  plotfwnd  = "gnuplot -persist ."+network+"-fwnd.gnu"
-  plotloss  = "gnuplot -persist ."+network+"-loss.gnu"
+  fwndfile = open (network+"-fwnd.gnu", 'w')
+  lossfile = open (network+"-loss.gnu", 'w')
+  plotfwnd  = "gnuplot -persist "+network+"-fwnd.gnu"
+  plotloss  = "gnuplot -persist "+network+"-loss.gnu"
   print plotfwnd
   print plotloss
   for port, list in portlist.iteritems():
     if(replot):
-      fwndfile.write("replot '."+network+"-"+port+".tr' "+fwnd_plot[0]+port+fwnd_plot[1]+port+"'\n")
-      lossfile.write("replot '."+network+"-"+port+".tr' "+loss_plot[0]+port+fwnd_plot[1]+port+"'\n")
+      fwndfile.write("replot '"+network+"-"+port+".tr' "+fwnd_plot[0]+port+fwnd_plot[1]+port+"'\n")
+      lossfile.write("replot '"+network+"-"+port+".tr' "+loss_plot[0]+port+fwnd_plot[1]+port+"'\n")
     else:
       fwndfile.write("set title '"+network+" Fwnd graph'\n")
-      fwndfile.write(labels)
-      fwndfile.write("plot '."+network+"-"+port+".tr' "+fwnd_plot[0]+port+fwnd_plot[1]+port+"'\n")
+      fwndfile.write(labels_fwnd)
+      fwndfile.write("plot '"+network+"-"+port+".tr' "+fwnd_plot[0]+port+fwnd_plot[1]+port+"'\n")
 
       lossfile.write("set title '"+network+" Loss graph'\n")
-      lossfile.write(labels)
-      lossfile.write("plot '."+network+"-"+port+".tr' "+loss_plot[0]+port+loss_plot[1]+port+"'\n")
+      lossfile.write(labels_loss)
+      lossfile.write("plot '"+network+"-"+port+".tr' "+loss_plot[0]+port+loss_plot[1]+port+"'\n")
       replot = True
   replot = False
 

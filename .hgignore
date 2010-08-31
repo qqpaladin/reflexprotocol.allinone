@@ -7,14 +7,4 @@
 ^ns-allinone
 ^\.config$
 ^aux/*/
-
-#latex
-\.d$
-\.lof$
-\.lot$
-\.pdf$
-\.toc$
-\.aux$
-\.log$
-\.make$
-\.fls$
+^MSc_Project/References/

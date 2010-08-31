@@ -1,4 +1,3 @@
-
 \section{Traffic Engineering}
 
 
@@ -71,18 +70,18 @@ Feedback
 
 Due to the distributed nature of TEXCP, instability and oscillation may occurs. Let's consider the basic architecture in figure ??.  Link AB, is shared between pair I1E1 and pair I2E2 and hence in the case of the link being underutilized, agents associated with both pair will react by sending more traffic over this link and potentially causing the link to be over-utilized. Hence, it is necessary to have a feedback mechanism that will allow the core nodes to not only till  the utilization of the links but also control and synchronize the answer of the multiple TEXCP agents that use the link. This mechanism is similar to what is used for congestion control when multiple sources sharing the same bottleneck attempts to adjust their rate and end up causing the bottleneck utilization to oscillate. The solution for both problems is to explicitly inform the sources of how much they should increase or decrease their rate. To provide the sources with such information, every core router needs first to compute the aggregate feedback, updated ever $T_p$ since it should be included in every probe. The aggregate feedback is an upper bound of how much the the global traffic on the link should increase/decrease. Hence, the aggregate feedback is positively proportional to the spare bandwidth S (S = capacity -load) over the link and the negatively to the current buffer size Q.
 \begin {equation}
-%\phi = \alpha . T_p . S - \beta . Q
+\phi = \alpha . T_p . S - \beta . Q
 \end {equation}
 The next step is to divide this aggregate feedback over the available sources, TEXCP adopt a Max-Min allocation policy to divide this aggregate feedback, and hence installing a fairness that will prevent congested IE pairs from starving the others. Additive Increase Multiplicative Decrease (AIMD) standard is used to achieve this fairness and hence: 
 \begin {equation}
-%\phi > 0 small delta^+ = \phi/N, small delta^- = 0 
-%phi < 0 small delta^+ =0 , small delta^-= \phi/smalphi_l
+\phi > 0 small delta^+ = \phi/N, small delta^- = 0 
+phi < 0 small delta^+ =0 , small delta^-= \phi/smalphi_l
 \end {equation}
-Where N is the number of active IE pairs that the router is seeing, and $\phi_l$ is the aggregate load on link l.
+Where N is the number of active IE pairs that the router is seeing, and $\smallphi_l$ is the aggregate load on link l.
 Before continuing on how this information is sent back to the IE agents, we would like to turn the reader attention to the scenario where multiple solutions of the optimization problem exist: consider a simple example where the two IE pairs in figure ?? have the same traffic, and and that the two links have the same capacity. One solution is that each router send one half of its traffic over each link, while the second solution is that the the first pair send all its traffic in link 1 while the other pair use the other link. In both solution the network utilization is the same and optimal, however the second solution has the merit of  a reduce delay. So it we be good in case where multiple solution exist, shortest path are prioritized. This condition could be implement through the use of a weighted fairness allocation of the aggregate feedback and the previous equation will become: 
 \begin {equation}
-%\phi > 0 small delta^+ = \fraction{v_{sp}\time \phi}{sum_{p' \in P_l} v_{sp'}}, \ small delta^- = 0 
-%phi < 0 small delta^+ =0 , small delta^-= \phi/smalphi_l
+\phi > 0 small delta^+ = \fraction{v_{sp}\time \phi}{sum_{p' \in P_l} v_{sp'}}, \ small delta^- = 0 
+phi < 0 small delta^+ =0 , small delta^-= \phi/smalphi_l
 \end {equation}
 Where,  $v_{sp}$ is the weight allocated to path p, which should be unversed proportional to p length.
 When the ingress router send the probe, each router in the path update the probe in the following way:
@@ -90,7 +89,7 @@ PATH UTILIZATION =  max (PATH UTILIZATION, ul )
 POSITIVE FEEDBACK =  min (POSITIVE FEEDBACK, δ+ ) 
 NEGATIVE FEEDBACK =  max (NEGATIVE FEEDBACK, δ− ) 
 Once the probe reaches the egress router, the router send back directly the final values. The first field in the probe is the utilization of the most congested path and in a similar way, the value for the feedback. The agent will update his sending rate $g_sp$ according to AIMD :
-$g_sp = g_sp + \phi+ - g_sp \time \phi-.$
+$g_sp = g_sp + δ+ - g_sp \time δ-.$
 
 Splitting the traffic
 
@@ -100,12 +99,12 @@ FLARE suggest also a splitting mechanism that uses a Token-counting algorithm,
 The final algorithm could be sum up in the following 3 steps:
 	1-when a packet arrive the counters of all the flows are updated as follows:
 \begin{equation}
-%c_{sp} = c{sp} + x_{sp} \time PacketSize.
+c_{sp} = c{sp} + x_{sp} \time PacketSize.
 \end{equation}
 	2- if the packet flow is not TCP or the last time the flow has been seen is older then the time out value, the packet is sent on a the path with the highest token counter value. The packet is sent over the same path as the last packet of the flowlet.
 	3-The last seen time is upadated as wel as the counter of the selectedpath according to :
 \begin{equation}
-%c_{sp} = c{sp} - PacketSize.
+c_{sp} = c{sp} - PacketSize.
 \end{equation}
 
 %\subsection{Splitting traffic}

@@ -1,0 +1,36 @@
+
+Still working on it.
+
+
+In this chapter, we introduce PREFLEX, a new and simple architecture that attempts to provide the basis for new resource pooling approach while resolving some of the obstacles described in the previous chapter. In section 3.1 we are going to see Path RE-Feedback the first component of the architecture and that will allow the network to explicitly inform the end host the preferred path.  While, the end-host role is to expose the congestion experienced through LEX the loss Exposure protocol described in section 3.2, that will allow the network by only inspecting the IP header to have a good vision about the congestion state of the different part of the network. The cooperation of these two components make possible a balancing scheme congestion rather than load as it is the case for most of the current traffic engineering protocols. The algorithm is described in section 3.3.
+
+\section{Loss Exposure}
+
+We discussed in section 2.3, how there is a lack of congestion information available at the network layer and how this affects the network efforts towards controlling the traffic and optimizing capacity sharing among the users. This is the main incentive behind the effort of enabling the network with mechanism that will reveals explicitly information that were confined until now in the transport layer, by revealing this information the network won't have the need to inspect higher layers to get the information. Keeping the same spirit, Loss EXposure is a protocol that allows to reveal in the IP header information related to losses that the transport layer is expecting.
+
+
+Code Point
+Explanation/Meaning
+Not-LECT
+Not Loss Exposure Capable transport
+LECT
+Loss Exposure Capable transport
+LEx
+Loss Experienced
+FNE
+Feedback Not Established
+
+
+FNE 
+
+The first step in this protocol is similar to any connection-oriented transport protocol, establishing the connection. This means packets that belongs to flows where a feedback wasn't estavlished yet will be marked by the end-hosts with the FNE code points, similar to what is done in re-ECN. Using TCP terminology, FNE marked packet correspond especially to the SYN and SYN/ACK packets exchanged at the start of the communication, but it might include also packets sent after a long idle period or new attempts for retransmission after successive timeouts. 
+Many advantages could be took from this signalling. First, it will eliminate one case where the network will inspect the higher layer looking for this information. But most of all, a new association between the end hosts and visible at the network layer could be established using the FNE-marked packets. The association is similar to transport layer concept of flow, and it will be referred to as flow-let. By making the network allocates the same path to the stream of packet belonging to the same flowlet many advantages could be drawn. First this could be used for an enhanced traffic splitting from the network side Packets reordering that is usually the problem encountered wher using packet-based splitting could be avoided. While flows being a small graniularity from the flows will allow to be nearer to the desired splitting, which is the main problem with flow-based spliting. Also, by knowing that a flowlet will take the same path, the transport layer could divide the flow into parallel flows that could be , migitating though one of the obstacles that prevent the transport layer from benefiting and using path diversity. This mechanism will allow the coexistence of both network based and transport based path pooling schemes.
+
+Echoing the Loss
+
+Now that the feedback has being established, most of the tranport layer protocols like TCP will attempt to adjust their sendong rate based on the network state that they are observing (this include delay, loss rate and ECN marking). This means that a new congestion signal will be added to the existing ECN: this new signal will indicate the end-to-end congestion experience in the previous RTT, while the ECN marking gibes an idea about the current congestion experience at the upstream of a node. This new metric could be used for evaluating from one hand the congestion that end hosts are making and also the service offered by the network. This constitutes a simple form of congestion exposure compared to the one in re-ECN. LEX requires the end-hosts to mark the retransmitted packets with the (Lex) codepoint. Gence the network could accurately estimate the end-to-end loss experienced in every path by simply dividing the number of bytes marked with Lex codepoint,  by the total number of bytes marked either LECT or Lex. As we are going to see in the balancing section, the information of the loss experienced in the different paths will be used to decide the amount of flows that will in every path. Another potential advantage that could be drawn from this marking is that the network could prioritize retransmitted packets.
+
+Analysis of the LEX protocol and comparison with re-ECN
+It could be easily concluded from the description made of LEX, that it borrows  many concepts from 
+\section{Path Re-feedback}
+\section{Balancing with PREFLEX}

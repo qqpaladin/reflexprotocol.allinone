@@ -7,3 +7,16 @@
 ^ns-allinone
 ^\.config$
 ^aux/*/
+
+
+
+
+#latex
+\.aux$
+\.log$
+\.d$
+\.toc$
+\.fls$
+\.make$
+\.lot$
+\.lof$

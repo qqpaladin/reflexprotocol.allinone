@@ -1,0 +1,515 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.8.26)  31 AUG 2010 13:28
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**dissertation-MSc-IGI.tex
+(./dissertation-MSc-IGI.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(./ucl_thesis.cls
+Document Class: ucl_thesis 1996/07/20 v1.4 UCL MRes/MPhil/PhD Thesis class
+(/usr/share/texmf-texlive/tex/latex/base/book.cls
+Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/bk10.clo
+File: bk10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (./ucl_a4.sty
+Package: ucl_a4 1996/08/01 v1.2 UCL A4 based page layout
+)
+(/usr/share/texmf-texlive/tex/latex/psnfss/times.sty
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+))
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
+\Gread@gobject=\count88
+))
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texmf-texlive/tex/latex/setspace/setspace.sty
+Package: setspace 2000/12/01 6.7 Contributed and Supported LaTeX2e package
+
+Package: `setspace' 6.7 <2000/12/01>
+)
+
+LaTeX Warning: Unused global option(s):
+    [**20pt**].
+
+(./dissertation-MSc-IGI.aux)
+\openout1 = `dissertation-MSc-IGI.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 21.
+
+(/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count89
+\scratchdimen=\dimen105
+\scratchbox=\box26
+\nofMPsegments=\count90
+\nofMParguments=\count91
+\everyMPshowfont=\toks15
+\MPscratchCnt=\count92
+\MPscratchDim=\dimen106
+\MPnumerator=\count93
+\everyMPtoPDFconversion=\toks16
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 22.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 22.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 29.
+ [2
+
+
+] [3
+
+] [4
+
+]
+(./dissertation-MSc-IGI.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 2.
+ [5
+
+]
+! Misplaced alignment tab character &.
+<argument> ...}Routing Modules: Ipv4TexcpRouting &
+                                                   Ipv4TexcpTableEntry
+l.35 ...pv4TexcpRouting & Ipv4TexcpTableEntry}{31}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+[6])
+\tf@toc=\write3
+\openout3 = `dissertation-MSc-IGI.toc'.
+
+ [7] (./dissertation-MSc-IGI.lof)
+\tf@lof=\write4
+\openout4 = `dissertation-MSc-IGI.lof'.
+
+ [8
+
+] (./dissertation-MSc-IGI.lot)
+\tf@lot=\write5
+\openout5 = `dissertation-MSc-IGI.lot'.
+
+ [9
+
+]
+Chapter 1.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 48.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [10
+
+]
+[11]
+Chapter 2.
+(./TE.tex
+
+LaTeX Warning: Citation `RFC 3272' on page 12 undefined on input line 9.
+
+[12
+
+]
+
+LaTeX Warning: Citation `Fortz2000' on page 13 undefined on input line 28.
+
+[13]
+Underfull \vbox (badness 1043) has occurred while \output is active []
+
+ [14]
+[15] [16] [17]
+Overfull \hbox (67.42523pt too wide) detected at line 79
+\OML/cmm/m/it/12 ^^^ > \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 smalldelta[] \OT1/cmr/
+m/n/12 = \OML/cmm/m/it/12 ^^^=N; smalldelta[] \OT1/cmr/m/n/12 = 0\OML/cmm/m/it/
+12 phi < \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 smalldelta[] \OT1/cmr/m/n/12 = 0\OML
+/cmm/m/it/12 ; smalldelta[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 ^^^=smalphi[]
+ []
+
+! Undefined control sequence.
+<recently read> \smallphi 
+                          
+l.80 ... that the router is seeing, and $\smallphi
+                                                  _l$ is the aggregate load ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.83 \phi > 0 small delta^+ = \fraction
+                                       {v_{sp}\time \phi}{sum_{p' \in P_l} v...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (122.93188pt too wide) detected at line 85
+\OML/cmm/m/it/12 ^^^ > \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 smalldelta[] \OT1/cmr/
+m/n/12 = [][]\OML/cmm/m/it/12 ;  smalldelta[] \OT1/cmr/m/n/12 = 0\OML/cmm/m/it/
+12 phi < \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 smalldelta[] \OT1/cmr/m/n/12 = 0\OML
+/cmm/m/it/12 ; smalldelta[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 ^^^=smalphi[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [18]
+Missing character: There is no Œ in font ptmr7t!
+Missing character: There is no ¥ in font ptmr7t!
+Missing character: There is no Œ in font ptmr7t!
+Missing character: There is no ¥ in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no à in font ptmr7t!
+Missing character: There is no í in font ptmr7t!
+
+! Missing number, treated as zero.
+<to be read again> 
+                   Œ
+l.92 $g_sp = g_sp + Œ¥+ - g_sp \time Œ
+                                      ¥-.$
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+Missing character: There is no Œ in font cmr12!
+Missing character: There is no ¥ in font cmr12!
+Missing character: There is no Œ in font cmr12!
+Missing character: There is no ¥ in font cmr12!
+
+LaTeX Warning: Citation `flowlet' on page 19 undefined on input line 97.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   P
+l.102 c_{sp} = c{sp} + x_{sp} \time P
+                                     acketSize.
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19])
+(./CC.tex
+
+LaTeX Warning: Citation `RFC896' on page 20 undefined on input line 3.
+
+[20]
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+
+Underfull \vbox (badness 3930) has occurred while \output is active []
+
+ [21]
+! Display math should end with $$.
+<to be read again> 
+                    
+l.25 ...sion enough difference between $$T_{min}$ 
+                                                  and $T_{max}$ so the end h...
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+
+LaTeX Warning: Citation `RFC 2481' on page 22 undefined on input line 27.
+
+
+Underfull \vbox (badness 7504) has occurred while \output is active []
+
+ [22])
+(./ConEx.tex
+
+LaTeX Warning: Citation `RFC5594' on page 23 undefined on input line 4.
+
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+
+Underfull \vbox (badness 1590) has occurred while \output is active []
+
+ [23]
+[24] [25]
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+) [26]
+Chapter 3.
+(./PREFLEX.tex [27
+
+]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.25 ... correspond especially to the SYN and SYN_
+                                                  ACK packets exchanged at t...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.27 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Underfull \hbox (badness 1383) in paragraph at lines 25--27
+[]\OT1/ptm/m/n/12 The first step in this pro-to-col is sim-i-lar to any connect
+ion-oriented trans-
+ []
+
+
+Underfull \hbox (badness 1902) in paragraph at lines 25--27
+\OT1/ptm/m/n/12 port pro-to-col, es-tab-lish-ing the con-nec-tion. This means p
+ack-ets that be-longs
+ []
+
+
+Underfull \hbox (badness 1755) in paragraph at lines 25--27
+\OT1/ptm/m/n/12 hosts with the FNE code points, sim-i-lar to what is done in re
+-ECN. Us-ing
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 25--27
+\OT1/ptm/m/n/12 TCP ter-mi-nol-ogy, FNE marked packet cor-re-spond es-pe-cially
+ to the SYN and
+ []
+
+
+Overfull \hbox (1877.08305pt too wide) in paragraph at lines 25--27
+\OT1/ptm/m/n/12 SYN$[]\OML/cmm/m/it/12 CKpacketsexchangedatthestartofthecommuni
+cation; butitmightincludealsopacketssentafteralongidleperiodornewattemptsforret
+ransmissionaftersuccessivetimeouts:Manyadvantagescouldbetookfromthissignalling:
+First; itwilleliminateonecasewherethenetworkwillinspectthehigherlayerlookingfor
+thisinformation:Butmostofall; anewassociationbetweentheendhostsandvisibleatthen
+etworklayercouldbeestablishedusingtheFNE \OMS/cmsy/m/n/12 ^^@
+ []
+
+
+Overfull \hbox (125.29192pt too wide) in paragraph at lines 25--27
+\OML/cmm/m/it/12 markedpackets:Theassociationissimilartotransportlayerconceptof
+flow; anditwillbereferredtoasflow \OMS/cmsy/m/n/12 ^^@
+ []
+
+
+Overfull \hbox (1016.66528pt too wide) in paragraph at lines 25--27
+\OML/cmm/m/it/12 let:Bymakingthenetworkallocatesthesamepathtothestreamofpacketb
+elongingtothesameflowletmanyadvantagescouldbedrawn:Firstthiscouldbeusedforanenh
+ancedtrafficsplittingfromthenetworksidePacketsreorderingthatisusuallytheproblem
+encounteredwherusingpacket \OMS/cmsy/m/n/12 ^^@
+ []
+
+
+Overfull \hbox (409.88583pt too wide) in paragraph at lines 25--27
+\OML/cmm/m/it/12 basedsplittingcouldbeavoided:Whileflowsbeingasmallgraniularity
+fromtheflowswillallowtobenearertothedesiredsplitting; whichisthemainproblemwith
+flow \OMS/cmsy/m/n/12 ^^@
+ []
+
+
+Overfull \hbox (1342.54816pt too wide) in paragraph at lines 25--27
+\OML/cmm/m/it/12 basedspliting:Also; byknowingthataflowletwilltakethesamepath; 
+thetransportlayercoulddividetheflowintoparallelflowsthatcouldbe; migitatingthou
+ghoneoftheobstaclesthatpreventthetransportlayerfrombenefitingandusingpathdivers
+ity:Thismechanismwillallowthecoexistenceofbothnetworkbasedandtransportbasedpath
+poolingschemes:$ 
+ []
+
+[28]) [29]
+Chapter 4.
+(./Impl.tex [30
+
+]
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [31]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [32]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [33]
+! Misplaced alignment tab character &.
+<argument> Routing Modules: Ipv4TexcpRouting &
+                                               Ipv4TexcpTableEntry
+l.36 ...s: Ipv4TexcpRouting & Ipv4TexcpTableEntry}
+                                                  
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+LaTeX Warning: Citation `kan1' on page 34 undefined on input line 40.
+
+
+Underfull \vbox (badness 2495) has occurred while \output is active []
+
+ [34]
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ú in font ptmr7t!
+Missing character: There is no ‚ in font ptmr7t!
+Missing character: There is no Ä in font ptmr7t!
+Missing character: There is no ù in font ptmr7t!
+
+[35]
+Missing character: There is no ‚ in font cmr8!
+Missing character: There is no Ä in font cmr8!
+Missing character: There is no ì in font cmr8!
+ [36] [37]) [38]
+Chapter 5.
+[39
+
+]
+Chapter 6.
+[40
+
+]
+Chapter 7.
+No file dissertation-MSc-IGI.bbl.
+[41
+
+] [42
+
+] (./dissertation-MSc-IGI.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 1091 strings out of 495061
+ 13759 string characters out of 1182621
+ 67025 words of memory out of 3000000
+ 4266 multiletter control sequences out of 15000+50000
+ 22074 words of font info for 43 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 29i,5n,21p,2467b,161s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
+mr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></us
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/f
+onts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/u
+rw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
+</usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-te
+xlive/fonts/type1/urw/times/utmri8a.pfb>
+Output written on dissertation-MSc-IGI.pdf (42 pages, 217125 bytes).
+PDF statistics:
+ 187 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

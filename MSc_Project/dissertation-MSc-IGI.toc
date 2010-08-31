@@ -1,0 +1,55 @@
+\contentsline {chapter}{\numberline {1}Introduction}{10}
+\contentsline {section}{\numberline {1.1}Overview}{11}
+\contentsline {section}{\numberline {1.2}Objectives}{11}
+\contentsline {section}{\numberline {1.3}Document Structure}{11}
+\contentsline {chapter}{\numberline {2}Background and state-of-the-art}{12}
+\contentsline {section}{\numberline {2.1}Traffic Engineering}{12}
+\contentsline {subsection}{\numberline {2.1.1}Definition and problem description}{12}
+\contentsline {subsection}{\numberline {2.1.2}Basic Concepts}{13}
+\contentsline {subparagraph}{TE as a controllability problem :}{13}
+\contentsline {subparagraph}{Routing and Traffic Engineering :}{14}
+\contentsline {subparagraph}{Traffic Engineering in MPLS networks}{14}
+\contentsline {subsection}{\numberline {2.1.3}Limitations}{15}
+\contentsline {subsection}{\numberline {2.1.4}Example of an adaptive trafic engineering protocol: TEXCP }{16}
+\contentsline {section}{\numberline {2.2}Congestion Control in Internet networks}{20}
+\contentsline {subsection}{\numberline {2.2.1}Problem description}{20}
+\contentsline {subsection}{\numberline {2.2.2}TCP and congestion control algorithm}{21}
+\contentsline {subsection}{\numberline {2.2.3}Active Queue Management}{22}
+\contentsline {section}{\numberline {2.3}Congestion Exposure and Re-Feedback Principles}{23}
+\contentsline {subsection}{\numberline {2.3.1}Motivation}{23}
+\contentsline {subsection}{\numberline {2.3.2}Overview of the current traffic control methods}{24}
+\contentsline {subsection}{\numberline {2.3.3}Re-inserting the Feedback Re-Feedback}{25}
+\contentsline {subsection}{\numberline {2.3.4}Use Cases}{26}
+\contentsline {chapter}{\numberline {3}PREFLEX }{27}
+\contentsline {section}{\numberline {3.1}Loss Exposure}{27}
+\contentsline {section}{\numberline {3.2}Path Re-feedback}{29}
+\contentsline {section}{\numberline {3.3}Balancing with PREFLEX}{29}
+\contentsline {chapter}{\numberline {4}Implementation}{30}
+\contentsline {section}{\numberline {4.1}Overview of ns-3:}{30}
+\contentsline {paragraph}{ns-3 architecture key concepts}{30}
+\contentsline {section}{\numberline {4.2}PREFLEX Framework}{32}
+\contentsline {subsection}{\numberline {4.2.1}PREFLEX at the end hosts}{32}
+\contentsline {subsection}{\numberline {4.2.2}PREFLEX in the network}{33}
+\contentsline {section}{\numberline {4.3}TEXCP Framework}{34}
+\contentsline {subsection}{\numberline {4.3.1}an overview of the framework}{34}
+\contentsline {subsection}{\numberline {4.3.2}Routing Modules: Ipv4TexcpRouting & Ipv4TexcpTableEntry}{34}
+\contentsline {subsection}{\numberline {4.3.3}Traffic Splitting: Ipv4FlowletClassifier}{35}
+\contentsline {subsection}{\numberline {4.3.4}Controlling congestion through traffic shaping: TrafficShaperNetDevice}{35}
+\contentsline {subsection}{\numberline {4.3.5}Texcp at the core routers: TexcpQueue}{36}
+\contentsline {section}{\numberline {4.4}Simulations using the framework}{37}
+\contentsline {subsection}{\numberline {4.4.1}Application: }{37}
+\contentsline {subsection}{\numberline {4.4.2}Helpers}{37}
+\contentsline {subsection}{\numberline {4.4.3}Tracing}{38}
+\contentsline {section}{\numberline {4.5}Implementation highlights, limitations and assumption}{38}
+\contentsline {chapter}{\numberline {5}Simulation Results and Analysis}{39}
+\contentsline {section}{\numberline {5.1}Analysis of PREF as a splitting mechanism}{39}
+\contentsline {section}{\numberline {5.2}Load balancing VS congestion balancing}{39}
+\contentsline {section}{\numberline {5.3}Analysis of PREFLEX balancing algorithm}{39}
+\contentsline {section}{\numberline {5.4}Using traffic shapers for controlling the congestion}{39}
+\contentsline {chapter}{\numberline {6}Conclusions and future work}{40}
+\contentsline {section}{\numberline {6.1}conclusion}{40}
+\contentsline {section}{\numberline {6.2}summary of contributions}{40}
+\contentsline {section}{\numberline {6.3}Future Work}{40}
+\contentsline {chapter}{section}{40}
+\contentsline {chapter}{\numberline {7}Appendices}{41}
+\contentsline {chapter}{Bibliography}{41}

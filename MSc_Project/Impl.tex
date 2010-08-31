@@ -33,7 +33,7 @@ The last function of the routing module is deciding the split in the first place
 		\subsection{an overview of the framework}
  	Recalling what was written in section 2.2.3, TEXCP is a traffic engineering protocol that targets the optimization of utilization within a single network. As figure ?? depicts, TEXCP framework could be divided in 4 elements: a routing module -similar to the one in PREFLEX-, a flowlet classifier -that is used to split the traffic using FLARE (see section 2.2.3), a special queue that process TEXP probes and a traffic shaper for congestion management. 
 
-  		\subsection{Routing Modules: Ipv4TexcpRouting and Ipv4TexcpTableEntry}
+  		\subsection{Routing Modules: Ipv4TexcpRouting & Ipv4TexcpTableEntry}
 
 TEXCP routing module is similar to the  the one in PREFLEX framework. When a packet comes, the routing modules fetch the table of available routes for the packet destination and call the path selection process. Two selection approaches are available PREF (section 4.2.2) and FLARE (section 4.3.3) . The outcome of this process will determine on which interface the routing module will send the packet.  This module contains also the implementation of the functions of TEXCP agents, that are mainly responsible for probing the available paths of the associated Ingress/Egress pair, and also the calculation of the split distribution over them.
 Agents and probing paths.

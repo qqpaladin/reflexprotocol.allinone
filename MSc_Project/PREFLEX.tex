@@ -1,4 +1,3 @@
-
 Still working on it.
 
 
@@ -23,7 +22,7 @@ Feedback Not Established
 
 FNE 
 
-The first step in this protocol is similar to any connection-oriented transport protocol, establishing the connection. This means packets that belongs to flows where a feedback wasn't estavlished yet will be marked by the end-hosts with the FNE code points, similar to what is done in re-ECN. Using TCP terminology, FNE marked packet correspond especially to the SYN and SYN/ACK packets exchanged at the start of the communication, but it might include also packets sent after a long idle period or new attempts for retransmission after successive timeouts. 
+The first step in this protocol is similar to any connection-oriented transport protocol, establishing the connection. This means packets that belongs to flows where a feedback wasn't estavlished yet will be marked by the end-hosts with the FNE code points, similar to what is done in re-ECN. Using TCP terminology, FNE marked packet correspond especially to the SYN and SYN_ACK packets exchanged at the start of the communication, but it might include also packets sent after a long idle period or new attempts for retransmission after successive timeouts. 
 Many advantages could be took from this signalling. First, it will eliminate one case where the network will inspect the higher layer looking for this information. But most of all, a new association between the end hosts and visible at the network layer could be established using the FNE-marked packets. The association is similar to transport layer concept of flow, and it will be referred to as flow-let. By making the network allocates the same path to the stream of packet belonging to the same flowlet many advantages could be drawn. First this could be used for an enhanced traffic splitting from the network side Packets reordering that is usually the problem encountered wher using packet-based splitting could be avoided. While flows being a small graniularity from the flows will allow to be nearer to the desired splitting, which is the main problem with flow-based spliting. Also, by knowing that a flowlet will take the same path, the transport layer could divide the flow into parallel flows that could be , migitating though one of the obstacles that prevent the transport layer from benefiting and using path diversity. This mechanism will allow the coexistence of both network based and transport based path pooling schemes.
 
 Echoing the Loss

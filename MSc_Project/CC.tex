@@ -22,7 +22,7 @@ The algorithms could be described as
 If the queue size is smaller than $T_{min}$, packets are enqueued.
 If queue size is larger than $T_{max}$ discard the packet.
 If the queue size is between $T_{min}$ and $T_{max}$ packets are dropped according to a probability p.
-The key to make the algorithm work is to well choose the algorithm parameters. Some of the consideration are to ensure a high utilization of the outgoing link and provision enough difference between $T_{min}$ and $T_{max}$ so the end hosts are informed and could react. Also differntial treatment could be applied by using different value of the discard probability p for different flow classes. 
+The key to make the algorithm work is to well choose the algorithm parameters. Some of the consideration are to ensure a high utilization of the outgoing link and provision enough difference between $$T_{min}$ and $T_{max}$ so the end hosts are informed and could react. Also differntial treatment could be applied by using different value of the discard probability p for different flow classes. 
 Explicit Congestion Notification (ECN)
 RED could also be combined with ECN \cite {RFC 2481} another AQM technique that allows the network to explicitly inform the end user of the congestion instead of relying only on the the host detecting packet losses. The network feedback is passed to the end user through two unused bits in the IP TOS byte.  Thus 4 code points are available :
 00: Non ECN-Capable Transport - Non-ECT 

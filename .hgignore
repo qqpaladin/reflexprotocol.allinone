@@ -5,6 +5,7 @@
 ^BRANCH$
 ~$
 ^ns-allinone
+^MSc_Project/
 ^\.config$
 ^aux/*/
 

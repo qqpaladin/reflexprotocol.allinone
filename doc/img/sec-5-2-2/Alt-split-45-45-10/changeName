@@ -1,0 +1,4 @@
+mv fwnd-192.0.0.0.eps fwnd-192-0-0-0.eps
+mv fwnd-192.0.1.0.eps fwnd-192-0-1-0.eps
+mv loss-192.0.0.0.eps loss-192-0-0-0.eps
+mv loss-192.0.1.0.eps loss-192-0-1-0.eps

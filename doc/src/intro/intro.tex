@@ -1,13 +1,43 @@
 \chapter{Introduction}
 \label{chapter:intro}
+
 This is adraft that resumes the ideas that i want to speak about in the introduction
+\section{Overview}     % section 1.1
+
+Over the past two decades, the number of Internet users as well as the services offered to them has tremendously increased. The overall effect of this increase meant that the network had to meet tougher requirements in terms of both the amount of traffic to support and the quality of service to guarantee.To achieve this goal, the cooperation of all the network processes and mechanisms is required. Traffic engineering is one of them and invoked to ensure that the network is being efficiently used. Under the competitive context of the market, the process has never had an equal importance role. Traffic engineering manipulates different control leveers to drive the network to an optimal state. At the top of this list we find routing. In fact, the simple and efficient routing of Internet had been viewed for a long time as one of its success reasins. However, the increasing demand on the network obliged to put this mechanism under scope. One of the problem pointed out is the unflexibility to overpass the single path lack of forwarding mechanism. Indeed, today's Internet is in need for path diversity to ensure robustesness and cost effictevly boost its performance. 
+\\ The arrival of MPLS technology enlarged a domain capability to control this path diversity. While, the first generation suffered from some limitation due to its offline nature, new approaches like MATE and TEXCP suceed in combining both adaptivity and stability. However all of these approaches focused on optimizing the network resources and not directly the customer experience. The reason behind this is simply that resource utilization is the only information visible for them. 
+\\ Indeed, one of the old and key architecture concepts of Internet is the hourglass model. This model restricts the role of the network layer to the simple task of packet forwarding. Limitation of the equipements capacity at the time motivated this design. By reducing the network task, there was no more need to reveal much of the control layer to the network.
+\\ Traffic Engineering wasn't affected alone by this lack of information. Controlling the congestion and though capacity sharing is left on end hosts hand. For TCP, this mechanism allocates an equal share for each routine and provide an elusive sense of fairnes. ISPs are seing more and more 
+\\ Hence the concept of congestion explosure suggest congestion information . re-ECN an illustration of this concept, allows a full accountability of the congestion that each user cause. Hence
+
+The use of congestion explosure could provide the network with the congestion information that it lacks to draw more efficiently the benfits of path diversity. 
+
+Congestion exposure requires the end host 
+This mechanism that allocate an equal capacity share for each TCP routine
+is another aspect that was left on the burden of end hosts. Transport protocol like TCP include a congestion avoidance algorithm that adapt the tranmission rate over according to the congestion level experienced over the path. This mechanism provides an elusive sens of fairness by allocating the same share of ca[pcity for all the TCP routines. 
+
+\section{Objectives}
+
+PREFLEX is a mutualistic architcture that facilitates cooperation between end host and stub domains to pool the path diversity. It proposes a simple form of congestion exposure and allow the end host to be aware of the network path prefernce. The aim of this project is to evaluate the capacity of this architecture to provide an efficient congestion balancing. An algorithm to balance the loss was to be defined.
+The performance of the defined algorithm is to be compared with a state or art 
+ 
+In fact, path diversity is a cost effective solution that offers both performance and robustesness. 
+MPLS comes and offered more flexibility. But even with adaptative routing mechanisms like MATE and TEXCP, path diversity hadn't delivered all its benefits. One of the reason is the amount of control plan revealed to the network. Hourglass modle is one of the key design concept in Internet network. 
+
+This requires the cooperation of end host. The end hosts are also interested in drawin benefits from path diversity.
+ 
+It has in its disposition control elements like 
+
+To achieve this goal multiple elements and pr
+One of the solution ingredients is certainly parallelism and path diversity. In addition to a significant boost of the network robustesness, 
+
+One of the most concerned elemnet with leveling up te network to meet with its current demands is TE. TE is the network engineering process responsible for ensuring that the network is been efficiently used. 
+
 
 Internet is growing and also expectaion bla bla . One of  engineering solution is path diversity, has multiple advantages robustesness bla bla, but the network is not efficielty benefitting from the path diversity, and the problem is in the internet design itself. The small problem, is that pooling has being always seen as a network thing, rising from transport guys says that they could do better since they have an end-to-end visbility. Actually they are right about the last point. This is one of the problems with the Internet design. The hourglass concept implies that the network should be kept dumb and all the intelligence should be kept at the edge. The reason behing this dogmm are diminishing, the equipement caapcity is increasing exponentially and the network providers are alreasy breaching it for diverse reasons. This problem exist also in congestion control. Network lack  information to identify the responsibles for the congestions and are not doing that good in tehir attempts for dividing the capacity among their customers. Congestion exposure is one of the solutions, that allow to reveal to the network the congestion that a host is experiencing and though his participation for it.
 
 But, this information could be also used for exploring path diversity. PREFLEX, is an architecture that uses this concepts and try to use it for balancing the traffic. The aim of this project was to evaluate how balancing could be done using this new architecture and then compare its performance with a tradditional traffic engineering approach for path diversity which is TEXCP that uses load instead of congestion.
 
-\label{intro}
-\section{Overview}     % section 1.1
 \section{Objectives}
 \section{Document Structure}
 

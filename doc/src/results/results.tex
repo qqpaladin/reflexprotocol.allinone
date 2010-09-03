@@ -71,10 +71,8 @@ PREF
     \label{fig:equal-thro-pref}
 }
 \end{center}
-
-
-
 \end{figure}
+
 FLARE
  \begin{figure}[h!]
  \begin{center}
@@ -84,7 +82,6 @@ FLARE
     \label{fig:equal-thro-flare}
 }
 \end{center}
-
 \end{figure}
 
 These seconds graphs provide a hint about the reason of the fluctuation. The path assignement process of PREF makes the flowlets, which are transport aware, evolve their whole life cycle in one path and hence have a different congestion experience than the other flows. As a result, their tranmission rates and the congestion that they are making ares decorrelated.In the other hand, the network flowlets used by FLARE are a smaller order of granuilarity and makes that the transport flows get a path attributed multiple times during their flow time. As a result, the congestion level that a TCP routine experienced is a combination of the congestion in the different paths and hence the flows adapt their tranmission rate to a common level of congestion and the fluctuations are less significant.
@@ -106,8 +103,8 @@ PREF
     \label{fig:texcp-util-pref}
 }
 \end{center}
-
 \end{figure}
+
 FLARE
  \begin{figure}[h!]
  \begin{center}
@@ -117,7 +114,6 @@ FLARE
     \label{fig:texcp-util-flare}
 }
 \end{center}
-
 \end{figure}
 
 The previous analysis is stil valid ine the case of balamcing by path utilization. This last parameter oscillates in the case of PREF splitting, and equalization is not achieved with the same accuracy.
@@ -142,7 +138,7 @@ The graphs bellow show the dropping rate observed at the bottleneck.
 
 \epsfig{file=img/sec-5-2-1/eight/dropRate, width=4.5in}
 \caption{
-  Drop Rate at the botlenecks. (An 
+  Drop Rate at the botlenecks. 
     \label{fig:split-eight}
 }
 \end{center}
@@ -157,12 +153,11 @@ The graphs bellow show the dropping rate observed at the bottleneck.
     \label{fig:split-time-four}
 }
 \end{center}
-
 \end{figure}
 
 \clearpage
 
-Eight
+{\bf Update interval: 1sec}
 
 \begin{figure}[h]
  \begin{center}
@@ -175,7 +170,7 @@ Eight
 \end{center}
 \end{figure}
 
-As expected, whith a small update interval the algorithm acts more aggresively and doesn't leave enough time for the flows to reach stability. As a result the congestion level experienced in the different paths (expressed by the dropping rate at each bottleneck) is not well balanced. A larger time intervals (8 and 4 sec) allow to achieve a better balancing of the congestion over the available paths and with an enhanced stability. From the different simulations that we've carried out, an update interval between 40 to 100 RTT (apprixmately 100ms for the simulations here) allowed to achieve most of the time a good accuracy of the congestion balancing. An even higher value for the update interval turns the balancer too slow. This effect could be illustrated with the reaction of the system for sudden and important change in traffic demand. We could see at around the second 600, when the demand on traffic turned from a destination to another one, the balancer with an update interval of 8 sec required relatively more time to achive equilibruim again.    
+As expected, whith a small update interval the algorithm acts more aggresively and doesn't leave enough time for the flows to reach stability. As a result the congestion level experienced in the different paths (expressed by the dropping rate at each bottleneck) is not well balanced. A larger time intervals (8 and 4 sec) allow to achieve a better balancing of the congestion over the available paths and with an enhanced stability. From the different simulations that we've carried out, an update interval between 40 to 100 RTT (apprixmately 100ms for the simulations here) allowed to achieve most of the time a good accuracy of the congestion balancing. An even higher value for the update interval turns the balancer too slow. This effect could be illustrated with the reaction of the system for sudden and important change in traffic demand. We could see at around the second 600, when the demand on traffic turned from a destination to another one, the balancer with an update interval of 4 sec required slightly less time to achieve equiblruim.    
  
  \clearpage
 
@@ -200,12 +195,41 @@ In this section we are going to analye PREFLEX balancing mode: Equalizatiom, Con
 Reminder
 $\beta_{E}$, $\beta_{C}$ and $\beta_{L}$ denotes positive factors associated consecutively with “equalization” $E$, “conservative” $C$, and “loss driven” $L$ modes.
 
-{\bf Equalization}
+{\bf Conservative mode} : $\beta_{E}=0$, $\beta_{C}=1$ and $\beta_{L}=0$
+\\The conservative mode doesn't achieve an acurate congestion balancing over the available paths. But more importantly, the split as defined by this mode is not stable. Though it can't be used to stabilize the performance of the balancer. A plausible explanation is limitation of the assumption that the flow fraction is equalt to byte fraction, when the loss rates of paths aren't equivalent.
 
-Configuration parameters: $\beta_{E}=1$, $\beta_{C}=0$ and $\beta_{L}=0$
+\begin{figure}[h!]
+ \begin{center}
 
-As depicted by figure \ref{fig:splitEqual-loss}, an equal distribution of flows over the paths doesn't achieve an equal balancing of loss. Moreover, its performance depends on the traffic nature in the network. Starting from time 200, when the flow number generated by I1 and I2 were different, the loss balancing got worse. This is an expected result since equal load balancing doesn't adapt to the changes in the network.
+\epsfig{file=img/sec-5-2-2/Alt-split-0-100-0/loss-192-0-0-0, width=4.5in}
+\caption{
+   Loss ratio $\rho_{i}$ for destination E1 as seen by balancer P in consrvative mode.
 
+    \label{fig:splitCon-loss}
+}
+\end{center}
+\end{figure}
+
+\clearpage
+\begin{figure}[h!]
+ \begin{center}
+
+\epsfig{file=img/sec-5-2-2/Alt-split-0-100-0/fwnd-192-0-0-0, width=4.5in}
+\caption{
+   The desired split that balancer P set for destination E1 in conservative mode.
+
+    \label{fig:splitCon-fwnd}
+}
+\end{center}
+\end{figure}
+
+
+{\bf Equalization} : $\beta_{E}=1$, $\beta_{C}=0$ and $\beta_{L}=0$
+\\As depicted by figure \ref{fig:splitEqual-loss}, an equal distribution of flows over the paths doesn't achieve an equal balancing of loss. Moreover, its performance depends on the traffic nature in the network. Path 3 underutilized illustrates the suboptimal nature of equal balancing. Also the difference of congestion levels in the other two paths is directly linked to changes in traffic demand. During the change on traffic demand between time 200sec and 600sec, the difference between the congestion levels sigificantly increased.
+
+However, the real contribution of the "equal" mode is to ensure that a minimum number of flows are sent over each path. In fact, as we are going to see next, the accuracy of the loss estimation made by the loss balancer depends on the number of flows sent over the path. 
+
+\clearpage
 \begin{figure}[h]
  \begin{center}
 
@@ -218,20 +242,16 @@ As depicted by figure \ref{fig:splitEqual-loss}, an equal distribution of flows 
 \end{center}
 \end{figure}
 
-However, the real cntribution of the "equal" mode is to ensure that a minimum number of flows are sent over each path. In fact, the accuracy of the loss estimation made by the loss balancer depends on the number of flows sent over the path.
 
-{\bf native loss driven mode}
-
-Configuration parameters: $\beta_{E}=0$, $\beta_{C}=0$ and $\beta_{L}=1$
-
-\clearpage
+{\bf Unbounded loss driven mode} : $\beta_{E}=0$, $\beta_{C}=0$ and $\beta_{L}=1$
+\\Figures \ref{fig:splitpureLoss-fwnd1} and \ref{fig:splitpureLoss-fwnd1} show that the balancer allocate different splits for destination E1 and E2 even when the system is symetric for the two destination. This is explained by the fact that balancing for the two destination is carried seperately which is natural since the flows for the two destinations. This is natural since the paths for the two destination are different even if they share the same bottleneck in our topology. But there is no one optimal split, and the balancer suceeds though during the first 200 sec in balance the congestion equally for both destination (see \ref{fig:splitpureLoss-loss1} and \ref{fig:splitpureLoss-loss2}). But by keeping to send less E2 flows on the path, the accuracy of the loss estimation become low and different from E1 flows. In particular, it is over estimated what accelerate more the drop. As a result the equalization mode is used to make sure that there are enough flows on every pathfor an accurate estimation of the loss.
 
 \begin{figure}[h]
  \begin{center}
 
 \epsfig{file=img/sec-5-2-2/Alt-split-100-0-0/fwnd-192-0-0-0, width=4.5in}
 \caption{
-   The desired split that balancer P set for destination E1 in native loss driven mode.
+   The desired split that balancer P set for destination E1 in unbounded loss driven mode.
 
     \label{fig:splitpureLoss-fwnd1}
 }
@@ -243,7 +263,7 @@ Configuration parameters: $\beta_{E}=0$, $\beta_{C}=0$ and $\beta_{L}=1$
 
 \epsfig{file=img/sec-5-2-2/Alt-split-100-0-0/fwnd-192-0-1-0, width=4.5in}
 \caption{
-   The desired split that balancer P set for destination E2 in native loss driven mode.
+   The desired split that balancer P set for destination E2 in unbounded loss driven mode.
 
     \label{fig:splitpureLoss-fwnd2}
 }
@@ -256,7 +276,7 @@ Configuration parameters: $\beta_{E}=0$, $\beta_{C}=0$ and $\beta_{L}=1$
 
 \epsfig{file=img/sec-5-2-2/Alt-split-100-0-0/loss-192-0-0-0, width=4.5in}
 \caption{
-   Loss ratio $\rho_{i}$ for destination E1 as seen by balancer P in "native" loss driven mode.
+   Loss ratio $\rho_{i}$ for destination E1 as seen by balancer P in unbounded loss driven mode.
 
     \label{fig:splitpureLoss-loss1}
 }
@@ -268,7 +288,7 @@ Configuration parameters: $\beta_{E}=0$, $\beta_{C}=0$ and $\beta_{L}=1$
 
 \epsfig{file=img/sec-5-2-2/Alt-split-100-0-0/loss-192-0-1-0, width=4.5in}
 \caption{
-   Loss ratio $\rho_{i}$ for destination E2 as seen by balancer P in "native" loss driven mode.
+   Loss ratio $\rho_{i}$ for destination E2 as seen by balancer P in unbounded loss driven mode.
 
     \label{fig:splitpureLoss-loss2}
 }
@@ -276,6 +296,64 @@ Configuration parameters: $\beta_{E}=0$, $\beta_{C}=0$ and $\beta_{L}=1$
 \end{figure}
 
 \clearpage
-Figures \ref{fig:splitpureLoss-fwnd1} and \ref{fig:splitpureLoss-fwnd1} show that 
+
+{\bf Bounded loss driven mode} : $\beta_{E}=0.9$, $\beta_{C}=0$ and $\beta_{L}=0.1$
+\\By allocating a share of the traffic to be equally distributed we guarantee that a minmum number of flows is sent over each path to continue probing the path in question and accurately estimate its level of congestion. The effect of this boundary is clearly shown in the loss distribution compared to the previous mode \ref{fig:splitlossD-loss1} and \ref{fig:splitlossD-loss2}. Though, the  booked share for equalization should be too high to block the loss equalization process. 
+
+In another hand, \ref{fig:splitlossD-fwnd1} and \ref{fig:splitlossD-fwnd1} {\bf Something about failure}
+
+
+\begin{figure}[h]
+ \begin{center}
+
+\epsfig{file=img/sec-5-2-2/Alt-split-90-0-10/fwnd-192-0-0-0, width=4.5in}
+\caption{
+   The desired split that balancer P set for destination E1 in "pure" loss driven mode.
+
+    \label{fig:splitlossD-fwnd1}
+}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+ \begin{center}
+
+\epsfig{file=img/sec-5-2-2/Alt-split-90-0-10/fwnd-192-0-1-0, width=4.5in}
+\caption{
+   The desired split that balancer P set for destination E2 in "pure" loss driven mode.
+
+    \label{fig:splitlossD-fwnd2}
+}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[h]
+ \begin{center}
+
+\epsfig{file=img/sec-5-2-2/Alt-split-90-0-10/loss-192-0-0-0, width=4.5in}
+\caption{
+   Loss ratio $\rho_{i}$ for destination E1 as seen by balancer P in "pure" loss driven mode.
+
+    \label{fig:splitlossD-loss1}
+}
+\end{center}
+\end{figure}
+
+\begin{figure}[h]
+ \begin{center}
+
+\epsfig{file=img/sec-5-2-2/Alt-split-90-0-10/loss-192-0-1-0, width=4.5in}
+\caption{
+   Loss ratio $\rho_{i}$ for destination E2 as seen by balancer P in "pure" loss driven mode.
+
+    \label{fig:splitlossD-loss2}
+}
+\end{center}
+\end{figure}
+
+\clearpage
 
 \section{Comparison between PREFLEX and TEXCP}
+
+\subsection{Balancing by path utilization}

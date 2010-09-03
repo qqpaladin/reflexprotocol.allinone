@@ -39,7 +39,17 @@ TCP implementations differ on how to react to losses and how to identify them (R
 
 An individual action from the end hosts toward the congestion presents some limitation. End hosts are only aware of the congestion when the packets start being dropped and they react simultaneously to the congestion causing thus a global synchronisation. RFC 2309 states that using some queue management techniques for congestion control will allow to decrease the number of dropped packets and avoid global synchronisation. 
 RED or Random Early Discard is one of these scheme that permit to avoid oscillation and the global synchronisation by starting to discard packets randomly before the queue is completely full:
-a figures
+
+ \begin{figure}[h]
+  \begin{center}
+\epsfig{file=img/eps/CC3, width=4.5in}
+\caption{
+  Drop probabiliry in RED.
+    \label{fig:RED}
+}
+ \end{center}
+\end{figure}
+
 The algorithm steps are the following:
 1-If the queue size is smaller than $T_{min}$, packets are enqueued.
 2-If queue size is larger than $T_{max}$ discard the packet.
@@ -47,16 +57,24 @@ The algorithm steps are the following:
 
 The key to make the algorithm work is to well choose the algorithm parameters. Some of the consideration are to ensure a high utilization of the outgoing link and provision enough difference between $T_{min}$ and $T_{max}$ so the end hosts are informed and could react. Also differntial treatment could be applied by using different value of the discard probability p for different flow classes. 
 
-Explicit Congestion Notification (ECN)
-RED could also be combined with ECN \cite {RFC 2481} another AQM technique that allows the network to explicitly inform the end user of the congestion instead of relying only on the the host detecting packet losses. The network feedback is passed to the end user through two unused bits in the IP TOS byte.  Thus 4 code points are available :
-%\begin{tabular}{ l | c } \hline 
-%00 & Non ECN-Capable Transport - Non-ECT \\ \hline 
-%10 & ECN Capable Transport - ECT(0) \\ \hline 
-%01 & ECN Capable Transport - ECT(1) \\ \hline 
-%11 & Congestion Encountered - CE  \\ \hline 
-%\\ \hline \end{tabular}
+{\bf Explicit Congestion Notification (ECN)}
+\\RED could also be combined with ECN \cite {RFC 2481} another AQM technique that allows the network to explicitly inform the end user of the congestion instead of relying only on the the host detecting packet losses. The network feedback is passed to the end user through two unused bits in the IP TOS byte.  Thus 4 code points are available :\\
 
-ECT(0) and ECT(1) indicates that the originator of the packet is ECN capable and in this case, if the packet has experienced congestion the router will mark the packet with CE code point. This is carried out in a similar scheme to RED and allows transport protocols and particularly TCP of being notified of congestion without having to experience loss. 
+\begin{center}
+\begin{tabular}{| l | c| } \hline 
+00 & Non ECN-Capable Transport - Non-ECT \\ \hline 
+10 & ECN Capable Transport - ECT(0) \\ \hline 
+01 & ECN Capable Transport - ECT(1) \\ \hline 
+11 & Congestion Encountered - CE  \\ \hline 
+\end{tabular}
+\\
+\caption{
+  ECN codepoint.
+    \label{fig:ECN}
+}
+\end{center}
+
+\\ECT(0) and ECT(1) indicates that the originator of the packet is ECN capable and in this case, if the packet has experienced congestion the router will mark the packet with CE code point. This is carried out in a similar scheme to RED and allows transport protocols and particularly TCP of being notified of congestion without having to experience loss. 
 By marking packets instead of dropping them, ECN reduces the number of dropped packets. It also reduces the delay for the network layer to consider the packet as dropped and hence the delay of its reaction to the congestion. Finally, is in-band signalling mechanism and doesn't add additional traffic which is particularly harmful when the network is experiencing congestion.
 
 

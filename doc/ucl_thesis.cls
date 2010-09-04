@@ -25,7 +25,7 @@
 \def \docdate{\filedate}
 \newcommand \@doctor{Doctor of Philosophy}
 \newcommand \@master{Master of Philosophy}
-\newcommand \@mres{Master of Research}
+\newcommand \@mres{Master of Science}
 \newcommand \@degree@string{\@doctor}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{ucl_thesis}[\filedate\space\fileversion\space UCL MRes/MPhil/PhD Thesis class]
@@ -221,7 +221,7 @@
 \newcommand \@maketitle{%
     \newpage%
     \null%
-    \vspace*{5em}%
+    \vspace*{4em}%
     \begin{center}%
         {\huge \bfseries \@title}\\[5em]%
         {\Large \itshape \@author}\\%
@@ -233,10 +233,11 @@
     \textbf{\@degree@string} \\
     of the \\
     \textbf{University of London}.
-    \end{center}%
+    \end{center}%    
     \vspace{2em}%
     \begin{center}%
-    Department of Electronic Electrical Engineering \\
+    Supervisor: George Pavlou (Prof.)\\
+    Department of Electronic and Electrical Engineering \\
     University College London
     \end{center}%
     \vspace{2em}%

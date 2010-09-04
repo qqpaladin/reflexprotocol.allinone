@@ -33,12 +33,15 @@ Where RTT is the Round Trip Time which is the necessary time for the packet to a
 \end{figure}
 
 So during the Slow Start phase the sender increase exponentially the congestion window {\it cwnd} until reaching the slow start threshold {\it ssthresh} then TCP sender enters the “Congestion Avoidance” phase where the cwnd is increased by 1 every time an acknowledgement is received.
-TCP implementations differ on how to react to losses and how to identify them (Retransmission TimeOut (RTO) or duplicate acks): either by reducing the cwnd to 1 and enter again the "Slow Start", or to ssthresh in the case of “Fast Transmit” and TCP transmitters enter directly the phase of  “Congestion Avoidance”. {\it ssthresh} is reduced also and usually put to the half of the cwnd before that the congestion occurs. Thus this algorithm is designed as Additive Increase Multiplicative Decrease AIMD. 
+TCP implementations differ on how to identify them (Retransmission TimeOut (RTO) or duplicate acks) and how to react to losses: either by reducing the cwnd to 1 and enter again the "Slow Start", or to ssthresh in the case of “Fast Transmit” and TCP transmitters enter directly the phase of  “Congestion Avoidance”. {\it ssthresh} is reduced also and usually put to the half of the cwnd before that the congestion occurs. Thus this algorithm is referred to as Additive Increase Multiplicative Decrease AIMD. It also associates TCP transmission rate to the loss ratio over the path. The association could be approximated through Mathis Formula:
+\begin{equation}
+R_{Tx in packets} \approx \frac{1}{RTT \cdot \rho}
+\end{equation}
 
 \subsection{Active Queue Management}
 
-An individual action from the end hosts toward the congestion presents some limitation. End hosts are only aware of the congestion when the packets start being dropped and they react simultaneously to the congestion causing thus a global synchronization. RFC 2309 states that using some queue management techniques for congestion control will allow to decrease the number of dropped packets and avoid global synchronization. 
-RED or Random Early Discard is one of these scheme that permit to avoid oscillation and the global synchronization  by starting to discard packets randomly before the queue is completely full:
+An individual action from the end hosts toward the congestion presents some limitation. End hosts are only aware of the congestion when the packets start being dropped and they react simultaneously to the congestion causing hence a global synchronization. [RFC 2309] states that using some queue management techniques for congestion control will allow the number of dropped packets to decrease and prevent global synchronization. 
+RED or Random Early Discard is one of these scheme that consists on starting to discard packets randomly before the queue is completely full:
 
  \begin{figure}[h]
   \begin{center}
@@ -50,15 +53,15 @@ RED or Random Early Discard is one of these scheme that permit to avoid oscillat
  \end{center}
 \end{figure}
 
-The algorithm steps are the following:
-1-If the queue size is smaller than $T_{min}$, packets are enqueued.
-2-If queue size is larger than $T_{max}$ discard the packet.
-3-If the queue size is between $T_{min}$ and $T_{max}$ packets are dropped according to a probability p.
+The algorithm steps are the following:\\
+1-If the queue size is smaller than $T_{min}$, packets are enqueued.\\
+2-If queue size is larger than $T_{max}$ discard the packet.\\
+3-If the queue size is between $T_{min}$ and $T_{max}$ packets are dropped according to a probability p.\\
 
-The key to make the algorithm work is to well choose the algorithm parameters. Some of the consideration are to ensure a high utilization of the outgoing link and provision enough difference between $T_{min}$ and $T_{max}$ so the end hosts are informed and could react. Also differential treatment could be applied by using different value of the discard probability p for different flow classes. 
+The key to make the algorithm works is to well choose its parameters. Some of the consideration are to ensure a high utilization of the outgoing link and provision enough difference between $T_{min}$ and $T_{max}$ so the end hosts are informed and could react. Also differential treatment could be applied by using different value of the discard probability p for different flow classes. 
 
 {\bf Explicit Congestion Notification (ECN)}
-\\RED could also be combined with ECN \cite {RFC 2481} another AQM technique that allows the network to explicitly inform the end user of the congestion instead of relying only on the host detecting packet losses. The network feedback is passed to the end user through two unused bits in the IP TOS byte.  Thus 4 code points are available:\\
+\\RED could also be combined with ECN [RFC 2481] another AQM technique that allows the network to explicitly inform the end user of the congestion instead of relying only on the host detecting packet losses. The network feedback is passed to the end user through two unused bits in the IP TOS byte. \\
 
 \begin{center}
 \begin{tabular}{| l | c| } \hline 
@@ -74,8 +77,8 @@ The key to make the algorithm work is to well choose the algorithm parameters. S
 }
 \end{center}
 
-\\ECT(0) and ECT(1) indicates that the originator of the packet is ECN capable and in this case, if the packet has experienced congestion the router will mark the packet with CE code point. This is carried out in a similar scheme to RED and allows transport protocols and particularly TCP of being notified of congestion without having to experience loss. 
-By marking packets instead of dropping them, ECN reduces the number of dropped packets. It also reduces the delay for the network layer to consider the packet as dropped and hence the delay of its reaction to the congestion. Finally, is in-band signaling mechanism and doesn't add additional traffic which is particularly harmful when the network is experiencing congestion.
+\\ECT(0) and ECT(1) indicates that the originator of the packet is ECN capable and in this case, if the packet has experienced congestion the router will mark the packet with CE code point. It could be carried outusing the schem defined by RED and allows transport protocols and particularly TCP to be notified of congestion without having to experience loss. 
+By marking packets instead of dropping them, ECN reduces the number of dropped packets. It also reduces the delay for the network layer to consider a packet as dropped and hence the delay of its reaction to the congestion. Finally, it is an in-band signaling mechanism and doesn't add additional traffic which is particularly useful when the network is experiencing congestion.
 
 
 

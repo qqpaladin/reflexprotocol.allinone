@@ -121,7 +121,7 @@ x_{sp} = max(0, x_{sp} + \Delta x_{sp}
 The next step is to divide this aggregate feedback over the available sources, TEXCP adopt a Max-Min allocation policy to divide this aggregate feedback, and hence installing a fairness that will prevent congested IE pairs from starving the others. Additive Increase Multiplicative Decrease (AIMD) standard is used to achieve this fairness and hence: 
 \begin {eqnarray}
 \Phi \ge 0 \Rightarrow \delta^+ = \frac{\Phi} {N}, \delta^- = 0 \\
-\Phi \ge 0 \Rightarrow \delta^+ = 0 , \delta^- = \frac{\Phi} \phi_l
+\Phi \le 0 \Rightarrow \delta^+ = 0 , \delta^- = \frac{\Phi} \phi_l
 \end {eqnarray}
 Where N denotes the number of active IE pairs that the router is seeing, and $\phi_l$ is the aggregate load on link l.
 

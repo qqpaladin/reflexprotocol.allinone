@@ -21,3 +21,5 @@
 \.make$
 \.lot$
 \.lof$
+\.cookie$
+\.pdf$

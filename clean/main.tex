@@ -1,0 +1,98 @@
+\documentclass[mres]{ucl_thesis}
+%twoside for double page printing
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{epsfig}
+\usepackage{verbatim}
+\usepackage{subfigure}
+%\renewcommand{\familydefault}{\sfdefault}
+%\usepackage{palatino}
+%\usepackage{lmodern}
+%\fontsize{20}{24}\selectfont
+
+
+
+\title{Using Congestion Exposure for Traffic Engineering}
+\author{Imad GRANDI}
+
+%\renewcommand{\baselinestretch}{1.5}
+%\renewcommand{\bibname}{References}
+
+\bibliographystyle{alpha}
+
+\begin{document}
+\maketitle
+
+\clearpage
+\clearpage
+\fontsize{12}{15}
+\selectfont
+\begin{center}
+\textbf{}
+\end{center}
+\clearpage
+\begin{center}
+\textbf{To my family}
+\end{center}
+
+\include{src/intro/abstract}
+\include{src/intro/ack}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+\listoffigures
+%\listoftables
+
+\cleardoublepage
+
+\include{src/intro/intro}
+
+\include{src/state/intro}
+\include{src/state/te}
+\include{src/state/cc}
+\include{src/state/conex}
+
+\include{src/preflex/intro}
+\include{src/preflex/preflex}
+
+\include{src/implementation/intro}
+\include{src/implementation/implementation}
+
+\include{src/results/intro}
+\include{src/results/results}
+%
+%%\include{src/conclusion/intro}
+%\include{src/conclusion/conclusion}
+%
+%%\addcontentsline{toc}{chapter}{section}{Appendices}
+%\addcontentsline{toc}{chapter}{section}
+%\chapter{Appendices}
+%%\appendix
+%%\input{appendix}
+%
+%\addcontentsline{toc}{chapter}{Bibliography}
+%
+%\bibliography{PhD}
+%%\begin{thebibliography}{9}
+%\bibitem[Araujo09]{arau1}J.Araujo, M. Rio, G. Pavlou. \emph{A Mutualistic Resource Pooling Architecture}.   2010.
+%\bibitem[RFC 3272]{RFC3272}D. Awduche, A. Chiu, A. Elwalid, I. Widjaja, X. Xiao. \emph{Overview and Principles of Internet Traffic Engineering}. RFC 3272, IETF, May 2002. (pp 4, 14, )
+%\bibitem[Awduche02]{awd1}D. Awduche, A. Chiu, A. Elwalid, I. Widjaja, X. Xiao. \emph{Overview and Principles of Internet Traffic Engineering}. May 2002.
+%
+%\bibitem[Kandula05]{kan1}S. Kandula, D. Katabi, B .Davie, A. Charny. \emph{Walking the Tightrope: Responsive Yet Stable Traffic Engineering}. August 2005. 
+%
+%\bibitem[Gojmerac03]{goj1}I. Gojmerac, T. Ziegler, F. Ricciato, P. Reichl. \emph{Adaptive Multipath Routing for Dynamic Traffic Engineering}. 2003.
+%\bibitem[Toguyni09]{tog09}A. Toguyni, O. Korbaa. \emph{DiffServ Aware MPLS Traffic
+%Engineering for ISP Networks: State of the Art and New Trends}. January 2009.
+%\bibitem[Sinha04]{sin1}S. Sinha, S. Kandula, D. Katabi. \emph{Harnessing TCPs Burstiness with Flowlet Switching}. 2004. 
+%\bibitem[Elwalid01]{elwal1}A. Elwalid, C. Jin, S. Low, I. Widjaja. \emph{MATE: MPLS Adaptive Traffic Engineering}. IETF, 2001. 
+%\bibitem[Xiao00]{xia1}X Xiao, A. Hannan, B. Bailey, L. M. Ni. \emph{Traffic Engineering with MPLS in the Internet}. IETF, 2000. 
+%\bibitem[Raiciu09]{rai1}C. Raiciu, D. Wischik, M. Handley. \emph{Practical Congestion Control for Multipath Transport Protocols}. 2009.
+%\bibitem[Bennett99]{ben1}J. C. R. Bennett, C. Partridge, N. Shectman. \emph{Packet Reordering is Not Pathological Network Behavior}. DECEMBER 1999.  
+%\bibitem[Fortz00]{fortz00}B. Fortz and M. Thorup. \emph{Internet Traffic Engineeringby Optimizing OSPF Weights.} In Proceedings of IEEE Infocom 2000, Tel Aviv, Israel, March 2000. (pp 32, 69)
+%\bibitem[Jacobson88]{jaco88}V. Jacobson and M. Karels. \emph{Congestion Avoidance and Control. Computer Communication Review,} Proceedings of ACM SIGCOMM 1988.
+%
+
+%\end{thebibliography}
+
+\end{document} 

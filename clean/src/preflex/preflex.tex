@@ -1,0 +1,88 @@
+\section{Loss Exposure}
+
+During the presentation of the Congestion Exposure, we've discussed how there is a lack of congestion information available at the network layer and how it affects the network efforts towards controlling the congestion and fairly charging the customers for the congestion that they are causing. This lack affects also the process of networks optimization, by restricting mostly their action to the optimization of resources utilization rather than targeting directly the quality of service that customers get. Keeping the same line of thinking, Loss EXposure is a simple protocol that allows end hosts to signal path loss back to the network. The information about the loss traditionally confined in the transport layer will be revealed by explicitly marking the IP header of retransmitted  packets.
+
+\subsection{ Establishing feedback}
+
+End hosts need to establish a connection first, before the source begins signalling back the feedback it gets about the loss. The packets of this first exchange are marked with FNE code point. The initiation of  feedback loops takes place essentially during the creation of the transport layer end-to-end connection.  Hence packets marked with FNE corresponds to SYN and SYN-ACK messages in TCP terminology. But, the restart of the loop could also take place after a long idle period or new attempts for retransmission after successive timeouts.
+
+Many advantages could be drawn from this signalling. First, it eliminates the network need for inspecting higher layer fields to identify connection establishment. But most of all, a new  association between the end hosts is visible at the network layer and established using the FNE-marked packets. This association could be used by the middleboxes to allocate state for different functions like control admission and traffic shaping. It also allows transport flows to be divided in potentially smaller divisions. These divisions are called flowlets like the unities used in FLARE for traffic splitting(see 2.1.4). Yet, they are not exactly the same. First, they are not from the same order of granularity (FNE flowlets could correspond to a full transport). Secondly, both network and end hosts are aware of the association created by FNE packets and use it to contract that all packets belonging to this stream will follow the same route.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{| l | c| } \hline
+Code Point & Explanation/Meaning \\ \hline
+Not-LECT & Not Loss Exposure Capable transport \\
+LECT & Loss Exposure Capable transport \\
+LEx & Loss Experienced \\
+FNE & Feedback Not Established \\
+\hline
+\end{tabular}
+\caption{
+  LEX codepoints
+}
+\end{center}
+\end{table}
+
+\subsection{Echoing the Loss}
+
+Once the feedback has been established, the end host could start revealing to the network the loss experienced in the last period of time. LEX is a simple form of Congestion Exposure that requires the end host to only mark retransmitted packets with the (LEx) code point. For the rest of the non retransmitted packets, the (LECT) code point is used. Coupled with ECN markings (see section 2.2.3), the network is in possession of two types of signals: an end-to-end vision of the experienced losses by the end host over the path during the previous RTT thanks to LEX, and the  current congestion experience at the upstream of each node that ECN markings provide. Hence the network could estimate rest-of-path congestion. But mostly the network will be able to accurately estimate the end-to-end loss experienced in every path by simply dividing the number of bytes marked with (LEx) code point,  by the total number of bytes marked either LECT or LEx. As we are going to see in the balancing algorithm section (3.3), the information of the loss experienced in the different paths will be used to decide the flow ratio to be sent in every path. Another potential use of the LEX marking is network prioritization of retransmitted packets.
+
+\subsection{Analysis of the LEX protocol and comparison with re-ECN}
+
+LEX reuses many of the concepts that the congestion exposure protocol re-ECN has brought. The use of FNE packets by the network for allocating the state is one example of the similarities. Also an analogy could be drawn between the congestion metric provided with re-ECN and the rest-of-path congestion that could be estimated when LEX and ECN are coupled. However, the drawback of this scheme is that it restrains the aggregation of  packet streams to be carried out close to the source while the policing should be placed close to the receiver. This is not a significant problem for PREFLEX, since the focus  is to allow stub domains to balance the congestion. Moreover, LEX and re-ECN could coexist together: LEX code points could be easily added to the re-ECN mechanism since three of them have equivalent code points in re-ECN while LEx could be attributed to the currently unused code point in re-ECN. Hence LEX could be considered as a complement to re-ECN and bridge for rit until congestion notification is widely deployed in the network.
+
+\section{Path Re-Feedback}
+
+The second component of the architecture is PREF mechanism that allows stub domains to inform the end host of its path preference, From one hand it allows end hosts to be aware of the path the packets are taking. It also provides another solution for the problem of traffic splitting (see 2.1.4), since end hosts knowing the network path preference could take in charge the responsibility of assigning packets to the path. PREF uses incoming FNE packets to trigger the path selection process for outgoing paths. This means that receivers will be left with the freedom of deciding when it is best to request a new path. The optimization of the scheme is dependent on the strategy adopted by the receiver for this matter. But, it could be a source of vulnerability for the network since FNE packets requires from the network  additional resources, both computational -e.g path selection- or in memory -keeping a state-. Therefore, the network might need to provision mechanisms to limit the FNE packets rate.
+
+The implementation of the path re-feedback could take place in the DiffServ field of the IPv4 header and more precisely the bits reserved for local use. So, once the edge network re-feedback its path preference the end host should tag all the subsequent packets with the path value.
+It is worthy to mention that even if the two architecture components are functionally separate their cooperation is necessary to achieve the target of congestion balancing. In the next section we will see how the architecture manages to optimally balance the congestion over the available paths.
+
+\section{Balancing by PREFLEX}
+
+\subsection{Algorithm requirements}
+The key goal for the algorithm is to balance the congestion level over the available routes. To this optimization goal, the design of PREFLEX architecture implies some additional requirements: 
+
+First, the path probing mechanism in PREFLEX relies on the loss experienced on the traffic that the end user sends over each path. Obviously, if  there is no traffic sent over the path there will be no feedback about the path congestion. Hence, the algorithm should allocate a minimum share of the traffic over all the paths,
+The algorithm shouldn't make assumptions neither about the actual distribution of the flows based on the previous splits: since the path selection process is triggered by the receiver: the algorithm shouldn't expect that all the flows had have seen a new path assigned between two decision intervals. Only, the flows that had sent FNE packets will be distributed according to the split defined by the balancer, while the long living flows that didn't ask for a new path will keep their old path and thus their distribution is based on previous splits. The actual flowlets distribution is unknown and a combination of previous two.
+
+\subsection{Algorithm inputs and outputs}
+
+PREFLEX balancing algorithm requires to keep some information about each of the available paths. These information are contained in the routing entries that are organized in tables for each egress destination $d$. The nature of this destination depends on the context were PREFLEX is invoked so it may correspond to a set of IP destinations addresses or prefixes, or it may correspond to effectively the  address of the egress gateway to reach an external domain in the case of intra domain Traffic Engineering. 
+
+A set of available routes $P_{d}$ is associated with destination $d$. For each route $i$ from the previous set, a table count of LEX markings is kept. In particular, $L_{di}$ is the number of bytes marked with the loss experienced codepoint and sent through route $i$ in the previous time period and $T_{di}$ denotes the total number of accounted bytes on routes $i$ for the same period of time. 
+
+The two inputs will be used by the algorithm to determine the split of destination $d$ traffic over its permitted routes. The split $f_{di}$, indicates  the fraction of destination $d$ flowlets  that should be assigned to path $i$. 
+
+\subsection{Algorithm description}
+
+The flowlet split for each destination could be calculated according to three approaches. An equalization mode where the tendency is to equally distribute the traffic over the flows, a conservative mode where the importance is given to the stability of the algorithm and to prevent overreacting for small fluctuations. And the last one is to balances the losses obviously.
+Hence, the final split is obtained as the combination of the splits calculated according to the three tendencies:
+
+\begin{equation}
+f'_{i} = \beta_{E}f'(E)_{i} + \beta_{C}f'(C)_{i} + \beta_{L}f'(L)_{i}
+\end{equation}
+
+Using the dash notation for the same quantities in the next time period, where $f'(E)_{i}$, $f'(C)i_{i}$ and $f'(L)_{i}$ consecutively denotes the split calculated according to {\it Equalization} approach $E$, {\it Conservative} approach $C$, and {\it Loss Driven } approach $L$. Similarly, $\beta_{E}$, $\beta_{C}$ and $\beta_{L}$ denotes positive factors associated with each mode and that verifies $\beta_{E}+\beta_{C}+\beta_{L} = 1$. 
+
+Now by definition $f'(E)_{i} = 1/N$. For the other two splits we need an additional assumption. As explained in 3.3.2,  the balancer doesn't necessary achieve the desired split by the next period of time. Hence the actual flowlets distribution will be estimated as $T_{di}/ T_{d}$, the fraction of bytes to destination $d$ that takes route $i$. $T_{d} = \sum_{i \in P_{d}}T_{di}$ denotes the total bytes for destination $d$,  and in a similar way let $L_{d} = \sum_{i \in P_{d}}L_{di}$ the total losses bytes for destination d. The accuracy of this assumption could be explained by the fact that flows experiencing the same loss rate will have close transmission rates (Mathis formula 2.16).
+
+Hence, for the conservative approach $f'(C)_{i} = T_{i}/T$. While for the loss driven approach, the idea is to choose the next split  $f'(L)_{i} = T'_{i}/T''$ so that the loss rates on the different routes are equal.
+
+The loss ratio is defined as $\rho_{di} = L_{di}/T_{di}$ for all any permitted route $i$. The loss rate is an unknown function of $T_{i}$ and the link bandwidth $B_{i}$. However, it is reasonable to assume that the loss rate is increasing with $T_{i}$ and decreasing with $B_{i}$. Hence, what ever the true function is, we could assume that in a small region around the current values of $T_{i}$ and $B_{i}$, it is locally linear $\rho_{i} = k_{i}T_{i}/B_{i}$, where $k_{i}$ is an unknown constant. Substituting gives
+\begin{equation}
+B_{i}/k_{i} = T_{i}^{2}/L_{i}
+\end{equation}
+
+So for the next period of time, loss rate is $\rho'_{i} = T'_{i}/L'_{i} = k'_{i}T'{i}/B'{i}$. Hence, to make the loss rate equal for all routes, we should choose $T_{i}$ that verifies $L'_{i}/T'_{i}=C$, where C is an unknown constant. Therefore we should take  $T'_{i}= CB'_{i}/k'_{i}$ and by assuming we are still near the locally linear region we get  $T'_{i}= CB_{i}/k_{i}$ and hence using (1) we get  $T'_{i}= CT_{i}^{2}/L_{i}$. Summing over i will give us: $T' = C \sum_{i} T_{i}^2/L_{i}$. Assuming that the traffic on average stayed the same we get the value of C and and though: 
+
+\begin{equation}
+T'_{i} = \frac {TT_{i}^{2}} {L_{i} \sum_{i} (T_{i}^2/L_{i})}
+\end{equation}
+
+Hence, the "loss driven" split, that needs to be set to achieve the $T'_{i}$ number of bytes on path i, is:
+
+\begin{equation}
+f'(L)_{i} = \frac{T'_{i}}{T} =  \frac {T_{i}^{2}} {L_{i} \sum_{i} (T_{i}^2/L_{i})}
+\end{equation}

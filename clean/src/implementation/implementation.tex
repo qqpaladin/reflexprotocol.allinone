@@ -54,9 +54,14 @@ In addition to informing TEXCP agents of the current paths utilization, probes a
 \subsection{Texcp at the core routers: TexcpQueue}
 
 All the modules described until now are located at the ingress router, however TEXCP and particularly its probing mechanism requires the intervention of the core routers as well. They are required to compute the link utilization and the feedback and to update passing probes with these. Information about the link utilization and dropping are usually confined in the lower parts of the node. In particular, ns-3 queue that are associated with net devices keep statistics about the passing traffic. Thus, the decision was made to implement the core routers functionalities in a queue module. This queue will be similar to a drop-tail queue but will be also enabled with the capacity required for probe processing. The first function is clearly the calculation of the link utilization. Queues in ns-3 keep track of many statistics like received, dropped and currently in queue, but they don't keep a track of the link utilization. By definition, the link utilization rate is the percentage of time a link was active. It was complicated to calculate the utilization according to its definition, however an accurate approximation could be calculated as follows:
-$link_utilization = \frac{ReceivedBytes – DroppedBytes}{LinkCapacity}$
+
+\begin{equation}
+link_utilization = \frac{ReceivedBytes – DroppedBytes}{LinkCapacity}
+\end{equation}
+
 The limitation of this formula comes form the fact that the queue buffer may delay the real link utilization.
-Secondly, the module needs also to compute the aggregate and individual feedback. The calculation of the aggregate feedback is straightforward usimg the queue statistics and equation ??. While the calculation of the positive feedback requires the queue to keep a track of the number of active IE pairs that uses the link.
+Secondly, the module needs also to compute the aggregate and individual feedback. The calculation of the aggregate feedback is straightforward using the queue statistics. While the calculation of the positive feedback requires the queue to keep a track of the number of active IE pairs that uses the link.
+
 Finally, routers check all the packets to see wither they are probes. Probe messages have a special tag which is a facility that allows to avoid a complete processing  of the headers, which will require a customization of the queue for layer 1 and 2 protocol. Once a probe is enqueued, the fields are updated according to the equations ??
 
 \section{Simulations using the framework}
@@ -70,6 +75,6 @@ Helpers in ns-3 are modules according the design pattern of wrappers that facili
 
 \subsection{Tracing}
 
-Utilization and loss are the key variables that our study interest in. Tracing focused on two elements, the core routers and especially the bottleneck where the dropping rate and the utilization variable are located. And the ingress point to track the aggregation of the LEX marking and the  splitting that the ingress routers are desiring.
+Utilization and loss are the key variables that our study interest in. Tracing focused on two elements, core routers and bottleneck where the dropping rate and the utilization variable are located. Tracing was also made available for internal algorithm state as well as the LEX marking as seen by edge routers.
 
-\section{Implementation highlights, limitations and assumption}
+%\section{Implementation highlights, limitations and assumption}

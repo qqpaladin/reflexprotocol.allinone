@@ -56,7 +56,7 @@ RED or Random Early Discard is one of these scheme that consists on starting to 
 The algorithm steps are the following:\\
 1-If the queue size is smaller than $T_{min}$, packets are enqueued.\\
 2-If queue size is larger than $T_{max}$ discard the packet.\\
-3-If the queue size is between $T_{min}$ and $T_{max}$ packets are dropped according to a probability p.\\
+3-If the queue size is between $T_{min}$ and $T_{max}$ packets are dropped according to a probability p.
 
 The key to make the algorithm works is to well choose its parameters. Some of the consideration are to ensure a high utilization of the outgoing link and provision enough difference between $T_{min}$ and $T_{max}$ so the end hosts are informed and could react. Also differential treatment could be applied by using different value of the discard probability p for different flow classes. 
 

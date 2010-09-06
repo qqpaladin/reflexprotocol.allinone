@@ -39,11 +39,10 @@ Flow Numbers.
 {\bf Conservative mode} : $\beta_{E}=0$, $\beta_{C}=1$ and $\beta_{L}=0$
 \\The conservative mode doesn't achieve an accurate congestion balancing over the available paths (figure \ref{fig:splitCon-loss}). But more importantly, the split as desired by the balancer in this mode is not stable(figure \ref{fig:splitCon-fwnd}). Thus, it can't be used to stabilize the performance of the balancer. A plausible explanation is the  limitation of the assumption that the flow fraction is equal to byte fraction, when the loss rates of paths aren't equivalent.
 
-\begin{comment}
 \begin{figure}[h!]
 \begin{center}
 
-  \includegraphics[width=5in]{img/sec-5-2-2/Alt-split-0-100-0/loss0}
+  \includegraphics[width=5in]{img/results/balancing/conservativeLoss0}
 \caption{
   Loss ratio $\rho_{i}$ for destination E1 as seen by balancer P in conservative mode.
 
@@ -56,7 +55,7 @@ Flow Numbers.
 \begin{figure}[h!]
 \begin{center}
 
-  \includegraphics[width=5in]{img/sec-5-2-2/Alt-split-0-100-0/fwnd0}
+  \includegraphics[width=5in]{img/results/balancing/conservativeFwnd0}
 \caption{
   The desired split that balancer P set for destination E1 in conservative mode.
 
@@ -75,7 +74,7 @@ However, the real contribution of the "equal" mode in PREFLEX balancing is to en
 \begin{figure}[h]
 \begin{center}
 
-\epsfig{file=img/sec-5-2-2/Alt-split-0-0-100/loss-192-0-0-0, width=4.5in}
+  \includegraphics[width=5in]{img/results/balancing/equalisationLoss0}
 \caption{
   Loss ratio $\rho_{i}$ for destination E1 as seen by balancer P in equalisation mode.
 
@@ -92,7 +91,7 @@ But by keeping to send less E2 flows on path 3, the accuracy of the loss estimat
 \begin{figure}[h]
 \begin{center}
 
-\epsfig{file=img/sec-5-2-2/Alt-split-100-0-0/fwnd-192-0-0-0, width=4.5in}
+  \includegraphics[width=5in]{img/results/balancing/lossFwnd0}
 \caption{
   The desired split that balancer P set for destination E1 in unbounded loss driven mode.
 
@@ -104,7 +103,7 @@ But by keeping to send less E2 flows on path 3, the accuracy of the loss estimat
 \begin{figure}[h]
 \begin{center}
 
-\epsfig{file=img/sec-5-2-2/Alt-split-100-0-0/fwnd-192-0-1-0, width=4.5in}
+  \includegraphics[width=5in]{img/results/balancing/lossFwnd1}
 \caption{
   The desired split that balancer P set for destination E2 in unbounded loss driven mode.
 
@@ -117,7 +116,7 @@ But by keeping to send less E2 flows on path 3, the accuracy of the loss estimat
 \begin{figure}[h]
 \begin{center}
 
-\epsfig{file=img/sec-5-2-2/Alt-split-100-0-0/loss-192-0-0-0, width=4.5in}
+  \includegraphics[width=5in]{img/results/balancing/lossLoss0}
 \caption{
   Loss ratio $\rho_{i}$ for destination E1 as seen by balancer P in unbounded loss driven mode.
 
@@ -129,7 +128,7 @@ But by keeping to send less E2 flows on path 3, the accuracy of the loss estimat
 \begin{figure}[h]
 \begin{center}
 
-\epsfig{file=img/sec-5-2-2/Alt-split-100-0-0/loss-192-0-1-0, width=4.5in}
+  \includegraphics[width=5in]{img/results/balancing/lossLoss1}
 \caption{
   Loss ratio $\rho_{i}$ for destination E2 as seen by balancer P in unbounded loss driven mode.
 
@@ -149,7 +148,7 @@ The algorithm has also a good answer towards failures. \ref{fig:splitlossD-fwnd1
 \begin{figure}[h]
 \begin{center}
 
-\epsfig{file=img/sec-5-2-2/Alt-split-90-0-10/fwnd-192-0-0-0, width=4.5in}
+  \includegraphics[width=5in]{img/results/balancing/90010Fwnd0}
 \caption{
   The desired split that balancer P set for destination E1 in bounded loss driven mode.
 
@@ -161,7 +160,7 @@ The algorithm has also a good answer towards failures. \ref{fig:splitlossD-fwnd1
 \begin{figure}[h]
 \begin{center}
 
-\epsfig{file=img/sec-5-2-2/Alt-split-90-0-10/fwnd-192-0-1-0, width=4.5in}
+  \includegraphics[width=5in]{img/results/balancing/90010Fwnd1}
 \caption{
   The desired split that balancer P set for destination E2 in bounded loss driven mode.
 
@@ -174,7 +173,7 @@ The algorithm has also a good answer towards failures. \ref{fig:splitlossD-fwnd1
 \begin{figure}[h]
 \begin{center}
 
-\epsfig{file=img/sec-5-2-2/Alt-split-90-0-10/loss-192-0-0-0, width=4.5in}
+  \includegraphics[width=5in]{img/results/balancing/90010Loss0}
 \caption{
   Loss ratio $\rho_{i}$ for destination E1 as seen by balancer P in bounded loss driven mode.
 
@@ -186,7 +185,7 @@ The algorithm has also a good answer towards failures. \ref{fig:splitlossD-fwnd1
 \begin{figure}[h]
 \begin{center}
 
-\epsfig{file=img/sec-5-2-2/Alt-split-90-0-10/loss-192-0-1-0, width=4.5in}
+  \includegraphics[width=5in]{img/results/balancing/90010Loss1}
 \caption{
   Loss ratio $\rho_{i}$ for destination E2 as seen by balancer P in bounded loss driven mode.
 
@@ -205,7 +204,7 @@ The graphs bellow show the dropping rate observed at the bottleneck.
 \begin{figure}[h]
 \begin{center}
 
-\epsfig{file=img/sec-5-2-1/eight/dropRate, width=5in}
+\epsfig{file=img/results/balancing/eight/dropRate, width=5in}
 \caption{
  Drop Rate at the bottlenecks for an update  of  8 sec.
    \label{fig:split-eight}
@@ -216,7 +215,7 @@ The graphs bellow show the dropping rate observed at the bottleneck.
 %FLARE
 \begin{figure}[h!]
 \begin{center}
-\epsfig{file=img/sec-5-2-1/four/dropRate, width=5in}
+\epsfig{file=img/results/balancing/four/dropRate, width=5in}
 \caption{
  Drop Rate at the bottlenecks for an update of 4 sec.
    \label{fig:split-time-four}
@@ -231,7 +230,7 @@ The graphs bellow show the dropping rate observed at the bottleneck.
 \begin{figure}[h]
 \begin{center}
 
-\epsfig{file=img/sec-5-2-1/one/dropRate, width=5in}
+\epsfig{file=img/results/balancing/one/dropRate, width=5in}
 \caption{
  Drop Rate at the bottlenecks for an update  of 1sec.
    \label{fig:split-one}
@@ -257,5 +256,3 @@ As expected, with a small update interval the algorithm acts more aggressively a
 %\end{center}
 %\end{figure}
 
-
-\end{comment}
